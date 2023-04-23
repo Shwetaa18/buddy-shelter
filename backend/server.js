@@ -9,6 +9,7 @@ const orders = require("./routes/orders");
 const passwordReset = require("./routes/forgot-password");
 const userAuthentication = require("./routes/userAuthentication");
 const Contact = require("./routes/contact")
+const Test = require("./routes/test")
 const auth = require("./middleware/auth");
 
 // middlewares
@@ -17,7 +18,7 @@ app.use(express.json())
 
 //mongoDb database connection
 mongoose.set('strictQuery', false);
-mongoose.connect('mongodb://localhost:27017/e-commerce-DApp', { useNewUrlParser: true })
+mongoose.connect('mongodb+srv://officialshweta1801:GeU4HOdIV8ZRkruN@cluster0.95rruho.mongodb.net/test', { useNewUrlParser: true })
 
 app.listen(4000,()=>{
     console.log('Server started')
@@ -30,3 +31,4 @@ app.use("/api/products", products);
 app.use("/api/cart",auth, cart);
 app.use("/api/orders",auth, orders);
 app.use("/api",Contact)
+app.use("/api/test",Test)

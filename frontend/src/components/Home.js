@@ -1,53 +1,57 @@
+import Products from './Products'
 import React from 'react'
 import Carousel from 'react-bootstrap/Carousel';
-import Products from './Products'
-
+import Navbar from "./Navbar"
 function Home() {
   return (
-    <Carousel fade>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          
-          src="/assets/animal.jpg"
-          alt="First slide"
-          width="500" height="500"
-        />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="/assets/animal.jpg"
-          alt="Second slide"
-          width="500" height="500"
-        />
+    <div>
+      <Navbar />
+      <Carousel  >
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            width="500" height="700"
+            src="/assets/image3.JPG"
+            alt="First slide"
+          />
+          <Carousel.Caption className='text-dark'>
+            <h1>BUDDY SHELTER</h1>
+            <p><h3>WAY TO HOME FOR STEET DOGS,WITH GOOD PRARENTS</h3></p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item >
+          <img
+            className="d-block w-100"
+            src="/assets/image1.JPG"
+            alt="Second slide"
+            width="500" height="700"
+          />
 
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="/assets/animal.jpg"
-          alt="Third slide"
-          width="500" height="500"
-        />
+          <Carousel.Caption className='text-dark'>
+            <h1>BUDDY SHELTER</h1>
+            <p><h3>WAY TO HOME FOR STEET DOGS,WITH GOOD PRARENTS</h3></p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="/assets/image2.JPG"
+            alt="Third slide"
+            width="500" height="700"
+          />
 
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
-    // <div className='card'>
+          <Carousel.Caption className='text-dark'>
+            <h1>BUDDY SHELTER</h1>
+            <p><h3>WAY TO HOME FOR STEET DOGS,WITH GOOD PRARENTS</h3></p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
+    </div>
+  );
+};
+export default Home
+
+  // <div className='card'>
     //   {/* <div className="card text-white border-0">
     //     <img src="/assets/animal.jpg" className="card-img" alt="Background"
     //       height="600px" />
@@ -62,6 +66,3 @@ function Home() {
     //   {/* <Products /> */}
 
     // </div>
-  );
-};
-export default Home
