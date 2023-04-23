@@ -8,6 +8,7 @@ const auth = require("../middleware/auth");
 
 router.post('/register', async (req, res) => {
     try {
+        console.log(req)
         const hashedPassword = await brcrypt.hash(req.body.password, 10);
         const user = await User.create({
             name: req.body.name,
