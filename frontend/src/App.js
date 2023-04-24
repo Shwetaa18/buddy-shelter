@@ -8,18 +8,19 @@ import Product from './components/Product';
 import Sidebar from './components/Sidebar';
 import Register from './components/Register';
 import Login from './components/Login';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <div className="App">
-      {/* <Navbar /> */}
       <Switch>
-          <Route exact  path="/" component={Home} />
-          <Route exact  path="/home" component={Home} />
-          <Route exact  path="/login" component={Login} />
-          <Route exact  path="/register" component={Register} />
-          <Route exact  path="/products" component={Products} />
-        </Switch>
+        {/* <Navbar /> */}
+        <Route exact path="/" component={Home} />
+        <Route exact path="/home" component={Home} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/products" component={Products} />
+      </Switch>
     </div>
   );
 }
