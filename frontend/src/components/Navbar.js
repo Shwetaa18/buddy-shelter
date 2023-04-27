@@ -62,7 +62,7 @@ function Navbar() {
                   : <></>
               }
               <NavLink to="/cart" className="btn btn-outline-dark me-2 ms-2">
-                <i className="fa fa-shopping-cart me-2"></i>Cart({state.length})
+                <i className="fa fa-shopping-cart me-2"></i>Cart
               </NavLink>
             </div>
 

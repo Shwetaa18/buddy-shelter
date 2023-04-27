@@ -74,10 +74,10 @@ async function uploadToCloudinary(locaFilePath) {
 router.post('/', upload.array("pets-images", 12), async (req, res) => {
     let imageUrlList = [];
 
-    if(req.files){
+    if (req.files) {
         for (let i = 0; i < req.files.length; i++) {
             let locaFilePath = req.files[i].path;
-    
+
             // Upload the local image to Cloudinary
             // and get image url as response
             let result = await uploadToCloudinary(locaFilePath);
@@ -88,7 +88,7 @@ router.post('/', upload.array("pets-images", 12), async (req, res) => {
         const pet = await Pets.create({
             petName: req.body.petName,
             description: req.body.description,
-            age:  req.body.age,
+            age: req.body.age,
             color: req.body.color,
             images: imageUrlList,
         })
@@ -102,7 +102,7 @@ router.post('/', upload.array("pets-images", 12), async (req, res) => {
 router.get('/', async (req, res) => {
     // return pets which are not adopted
     try {
-        const data = await Pets.find({ isAdopted: false})
+        const data = await Pets.find({ isAdopted: false })
         res.json({ status: 'ok', data: data })
     } catch (error) {
         console.log(error)
@@ -125,10 +125,10 @@ router.patch('/update/:id', upload.array("pets-images", 12), async (req, res) =>
         let updatedBody = req.body;
         let imageUrlList = [];
 
-        if(req.files){
+        if (req.files) {
             for (var i = 0; i < req.files.length; i++) {
                 var locaFilePath = req.files[i].path;
-        
+
                 // Upload the local image to Cloudinary
                 // and get image url as response
                 var result = await uploadToCloudinary(locaFilePath);
@@ -136,8 +136,11 @@ router.patch('/update/:id', upload.array("pets-images", 12), async (req, res) =>
             }
             updatedBody.images = imageUrlList
         }
-        await Pets.findByIdAndUpdate(req.params.id,updatedBody).then((data) => {
-            res.json({ status: 'ok', message: 'product updated successfully'})
+        await Pets.findByIdAndUpdate(req.params.id, updatedBody).then((data) => {
+            res.json({ status: 'ok', message: 'product updated successfully', data: data })
+        })
+        await Pets.find().then((data) => {
+            console.log(data)
         })
     } catch (error) {
         console.log(error)

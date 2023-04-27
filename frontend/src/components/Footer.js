@@ -12,7 +12,7 @@ import { Button } from 'react-bootstrap';
 export default function Footer() {
     return (
         <>
-            <div>
+            <div className='fixed-bottom'>
                 <MDBFooter className='bg-light text-center'>
                     <MDBContainer className='p-4 pb-0'>
                         <section className='mb-4'>

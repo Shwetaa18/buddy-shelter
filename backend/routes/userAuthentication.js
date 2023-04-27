@@ -20,15 +20,15 @@ router.post('/register', async (req, res) => {
     }
 })
 
-// router.get('/', async (req, res) => {
-//     try {
-//         await User.find().then((data) => {
-//             res.json({ status : 'ok', data: data })
-//         })
-//     } catch (error) {
-//         res.json({ status: 'error', error: error.message })
-//     }
-// })
+router.get('/', async (req, res) => {
+    try {
+        await User.find().then((data) => {
+            res.json({ status : 'ok', data: data })
+        })
+    } catch (error) {
+        res.json({ status: 'error', error: error.message })
+    }
+})
 
 router.post('/login', async (req, res) => {
     try {
