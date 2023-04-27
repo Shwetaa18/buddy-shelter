@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
-const products = require("./routes/products");
+const pets = require("./routes/pets");
 const cart = require("./routes/cart");
 const orders = require("./routes/orders");
 const passwordReset = require("./routes/forgot-password");
@@ -27,7 +27,7 @@ app.listen(4000,()=>{
 
 app.use("/api/password-reset", passwordReset);
 app.use("/api", userAuthentication);
-app.use("/api/products", products);
+app.use("/api/pets", pets);
 app.use("/api/cart",auth, cart);
 app.use("/api/orders",auth, orders);
 app.use("/api",Contact)

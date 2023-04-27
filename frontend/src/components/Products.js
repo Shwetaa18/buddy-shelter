@@ -6,11 +6,27 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import { getPets } from '../scripts/pets';
 
 function Products() {
   const [data, setData] = useState([])
-  const [filter, setFilter] = useState(data)
-  const [loading, setLoading] = useState(false)
+  const [filter, setFilter] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [selectedId, setSelectedId] = useState()
+
+  useEffect(() => {
+    const loadPets = async () => {
+      await getPets().then((data) => {
+        setData(data.data.data);
+        setLoading(false)
+      })
+    }
+    loadPets()
+  }, [])
+
+  const handleAddToCart = () => {
+    
+  }
 
   const Loading = () => {
     return (
@@ -33,7 +49,7 @@ function Products() {
           <button className='btn btn-outline-dark me-2' onClick={() => filterProduct("")}> Dog For sale and Adoption</button>
           <button className='btn btn-outline-dark me-2' onClick={() => filterProduct("")}>Cats For sale and Adoption</button>
         </div>
-        {
+        {/* {
           filter.map((product) => {
             return (
               <>
@@ -49,14 +65,17 @@ function Products() {
                 </div>
               </>
             )
-          })}
+          })} */}
       </>
     )
   }
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = (id) => {
+    setShow(true);
+    setSelectedId(id)
+  }
   return (
     <>
       <div>
@@ -111,13 +130,12 @@ function Products() {
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>cancel</Button>
-            <Button variant="primary" onClick={handleClose}>add to cart</Button>
+            <Button variant="primary" onClick={handleAddToCart}>add to cart</Button>
           </Modal.Footer>
         </Modal>
         <Table striped bordered hover className='my-2 mx-2 mb-2 '>
           <thead>
             <tr>
-              <th>id</th>
               <th>Name</th>
               <th>age</th>
               <th>color</th>
@@ -127,15 +145,18 @@ function Products() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Zeoy</td>
-              <td>2</td>
-              <td>White</td>
-              <td>Fully train dog with good IQ</td>
-              <td>image</td>
-              <td><Button onClick={handleShow}>Add</Button></td>
-            </tr>
+            {data.map((pet) => {
+              return (
+                <tr key={pet.id}>
+                  <td>{pet.petName}</td>
+                  <td>{pet.age}</td>
+                  <td>{pet.color}</td>
+                  <td>{pet.description}</td>
+                  <td>images</td>
+                  <td><Button onClick={handleShow(pet.id)}>Add</Button></td>
+                </tr>
+              )
+            })}
           </tbody>
         </Table>
 

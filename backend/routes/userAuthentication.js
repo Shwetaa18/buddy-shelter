@@ -8,20 +8,27 @@ const auth = require("../middleware/auth");
 
 router.post('/register', async (req, res) => {
     try {
-        console.log(req)
         const hashedPassword = await brcrypt.hash(req.body.password, 10);
         const user = await User.create({
             name: req.body.name,
             email: req.body.email,
-            phoneNo: req.body.phoneNo,
             password: hashedPassword,
         })
         res.json({ status: 'ok' })
     } catch (error) {
-        console.log(error)
-        res.json({ status: 'error', error: 'Duplicate email' })
+        res.json({ status: 'error', error: error.message })
     }
 })
+
+// router.get('/', async (req, res) => {
+//     try {
+//         await User.find().then((data) => {
+//             res.json({ status : 'ok', data: data })
+//         })
+//     } catch (error) {
+//         res.json({ status: 'error', error: error.message })
+//     }
+// })
 
 router.post('/login', async (req, res) => {
     try {

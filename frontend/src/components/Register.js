@@ -1,5 +1,7 @@
-import React from 'react';
-import Button  from 'react-bootstrap/Button';
+import React, { useState, useEffect } from 'react';
+import Button from 'react-bootstrap/Button';
+import { registerCall } from '../scripts/auth';
+import { useHistory } from 'react-router-dom'
 import {
     MDBContainer,
     MDBCard,
@@ -11,6 +13,37 @@ import {
 } from 'mdb-react-ui-kit';
 
 function App() {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const history = useHistory()
+
+    useEffect(() => {
+        if(localStorage.getItem('AuthToken')){
+            history.push('/')
+        }
+    },[])
+
+    const handleRegister = async (e) => {
+        e.preventDefault();
+        if (password === confirmPassword) {
+            const data = {
+                name: name,
+                email: email,
+                password: password,
+                confirmPassword: confirmPassword
+            }
+            await registerCall(data).then((data) => {
+                alert("User Registered successfully")
+                history.push('/login')
+            });
+        }else{
+            alert("password does not match")
+        }
+
+    }
+
     return (
         <MDBContainer fluid className='d-flex align-items-center justify-content-center bg-image' style={{ backgroundImage: 'url(https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp)' }}>
             <div className='mask gradient-custom-3'></div>
@@ -19,17 +52,17 @@ function App() {
                     <h2 className="text-uppercase text-center mb-3 my-3">Create an account</h2>
                 </MDBCardHeader>
                 <MDBCardBody className='px-5'>
-                    <MDBInput wrapperClass='mb-1' label='Your Name' size='lg' id='form1' placeholder='Enter your name' type='text' />
-                    <MDBInput wrapperClass='mb-1' label='Your Email' size='lg' id='form2' placeholder='Enter your email' type='email' />
-                    <MDBInput wrapperClass='mb-1' label='Password' size='lg' id='form3' placeholder='Enter your password' type='password' />
-                    <MDBInput wrapperClass='mb-1' label='Repeat your password' size='lg' id='form4' placeholder='ReEnter your password' type='password' />
+                    <MDBInput wrapperClass='mb-1' value={name} onChange={(e) => { setName(e.target.value) }} label='Your Name' size='lg' id='form1' placeholder='Enter your name' type='text' />
+                    <MDBInput wrapperClass='mb-1' value={email} onChange={(e) => { setEmail(e.target.value) }} label='Your Email' size='lg' id='form2' placeholder='Enter your email' type='email' />
+                    <MDBInput wrapperClass='mb-1' value={password} onChange={(e) => { setPassword(e.target.value) }} label='Password' size='lg' id='form3' placeholder='Enter your password' type='password' />
+                    <MDBInput wrapperClass='mb-1' value={confirmPassword} onChange={(e) => { setConfirmPassword(e.target.value) }} label='Repeat your password' size='lg' id='form4' placeholder='ReEnter your password' type='password' />
                     <div className='d-flex flex-row justify-content-center mb-4'>
                         <MDBCheckbox name='flexCheck' id='flexCheckDefault' label='I agree all statements in Terms of service' />
                     </div>
                     {/* <Button className='mb-4 w-100 gradient-custom-4' size='lg'>Register</Button> */}
                 </MDBCardBody>
                 <MDBCardFooter className='px-5'>
-                    <Button className='mb-4 w-100 gradient-custom-4 my-3' size='lg'>Register</Button>
+                    <Button onClick={handleRegister} className='mb-4 w-100 gradient-custom-4 my-3' size='lg'>Register</Button>
                 </MDBCardFooter>
             </MDBCard>
         </MDBContainer>

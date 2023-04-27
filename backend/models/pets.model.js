@@ -1,19 +1,20 @@
 const mongoose = require('mongoose')
 
-const ProductSchema = new mongoose.Schema({
-    productName: { type: 'String', required: true },
+const PetSchema = new mongoose.Schema({
+    petName: { type: 'String', required: true },
     description: { type: 'String' },
     age: { type: 'Number', required: true},
     color: { type: 'String', required: true },
     images: [{
         type: String
-    }],   
+    }],
+    isAdopted: { type: 'Boolean', default: false }   
 },
     {
-        collection: 'products-data'
+        collection: 'pets-data'
     }
 )
 
-const model = mongoose.model('ProductData', ProductSchema)
+const model = mongoose.model('PetData', PetSchema)
 
 module.exports = model

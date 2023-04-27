@@ -1,11 +1,10 @@
 //login form one 
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox, MDBFooter, MDBNavbar } from 'mdb-react-ui-kit';
 import { Button } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import { loginCall } from '../scripts/auth';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function Login() {
 
@@ -13,6 +12,12 @@ function Login() {
 
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('');
+
+    useEffect(() => {
+        if(localStorage.getItem('AuthToken')){
+            history.push('/')
+        }
+    },[])
 
     const handleLogin = async (e) =>{
         const data = {
