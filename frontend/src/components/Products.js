@@ -150,11 +150,11 @@ function Products() {
             <thead>
               <tr>
                 <th>Name</th>
-                <th>age</th>
-                <th>color</th>
-                <th>description</th>
-                <th><img src=''></img></th>
-                <th>click to add</th>
+                <th>Age</th>
+                <th>Colour</th>
+                <th>Description</th>
+                {/* <th><img src=''></img></th> */}
+                <th>Add to cart</th>
               </tr>
             </thead>
             <tbody>
@@ -166,7 +166,7 @@ function Products() {
                       <td>{pet.age}</td>
                       <td>{pet.color}</td>
                       <td>{pet.description}</td>
-                      <td>images</td>
+                      {/* <td>images</td> */}
                       <td>
                         <Button id={pet._id} onClick={(e) => { handleAddToCart(e.target.id) }} >Add</Button>
                       </td>

@@ -62,11 +62,11 @@ function Cart() {
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>age</th>
-                                <th>color</th>
-                                <th>description</th>
+                                <th>Age</th>
+                                <th>Colour</th>
+                                <th>Description</th>
                                 <th><img src=''></img></th>
-                                <th>click to add</th>
+                                <th>Add to Cart</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -80,7 +80,7 @@ function Cart() {
                                             <td>{pet.pet.description}</td>
                                             <td>images</td>
                                             <td>
-                                                <Button id={pet.pet._id} onClick={(e) => { handleRemoveFromCart(e.target.id) }} >remove</Button>
+                                                <Button id={pet.pet._id} onClick={(e) => { handleRemoveFromCart(e.target.id) }} >Remove</Button>
                                             </td>
                                         </tr>
                                     )

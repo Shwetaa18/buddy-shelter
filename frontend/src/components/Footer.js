@@ -2,10 +2,7 @@ import React from 'react';
 import {
     MDBFooter,
     MDBContainer,
-    MDBCol,
-    MDBRow,
     MDBIcon,
-    MDBBtn
 } from 'mdb-react-ui-kit';
 import { Button } from 'react-bootstrap';
 
@@ -16,57 +13,57 @@ export default function Footer() {
                 <MDBFooter className='bg-light text-center'>
                     <MDBContainer className='p-4 pb-0'>
                         <section className='mb-4'>
-                            <MDBBtn
+                            <Button
                                 floating
                                 className='m-1'
                                 style={{ backgroundColor: '#3b5998' }}
-                                href='#!'
+                                href='https://www.facebook.com/'
                                 role='button'
                             >
                                 <MDBIcon fab icon='facebook-f' />
-                            </MDBBtn>
+                            </Button>
 
-                            <MDBBtn
+                            <Button
                                 floating
                                 className='m-1'
                                 style={{ backgroundColor: '#55acee' }}
-                                href='#!'
+                                href='https://www.twitter.com/'
                                 role='button'
                             >
                                 <MDBIcon fab icon='twitter' />
-                            </MDBBtn>
+                            </Button>
 
-                            <MDBBtn
+                            <Button
                                 floating
                                 className='m-1'
                                 style={{ backgroundColor: '#dd4b39' }}
-                                href='#!'
+                                href='https://www.google.com/'
                                 role='button'
                             >
                                 <MDBIcon fab icon='google' />
-                            </MDBBtn>
+                            </Button>
 
                             <Button
                                 floating
                                 className='m-1'
                                 style={{ backgroundColor: '#ac2bac' }}
-                                href='#!'
+                                href='https://www.instagram.com/'
                                 role='button'
                             >
                                 <MDBIcon fab icon='instagram' />
                             </Button>
 
-                            <MDBBtn
+                            <Button
                                 floating
                                 className='m-1'
                                 style={{ backgroundColor: '#0082ca' }}
-                                href='#!'
+                                href='https://www.linkedin.com/'
                                 role='button'
                             >
                                 <MDBIcon fab icon='linkedin-in' />
-                            </MDBBtn>
+                            </Button>
 
-                            <MDBBtn
+                            {/* <Button
                                 floating
                                 className='m-1'
                                 style={{ backgroundColor: '#333333' }}
@@ -74,14 +71,14 @@ export default function Footer() {
                                 role='button'
                             >
                                 <MDBIcon fab icon='github' />
-                            </MDBBtn>
+                            </Button> */}
                         </section>
                     </MDBContainer>
 
                     <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
                         © 2020 Copyright:
-                        <a className='text-white' href='https://mdbootstrap.com/'>
-                            MDBootstrap.com
+                        <a className='text-white' href='http://localhost:3000/'>
+                           Buddy_Shelter.com
                         </a>
                     </div>
                 </MDBFooter>
